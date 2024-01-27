@@ -79,15 +79,11 @@ function createMap(earthquakes) {
     var div = L.DomUtil.create('div', 'info legend');
     var depthValues = [0, 10, 30, 50, 70, 90];  // Adjust depth values as needed
     div.innerHTML += '<h4>Depth</h4>';
+  
     for (var i = 0; i < depthValues.length; i++) {
       div.innerHTML +=
-        '<i style="background:' + getColor(depthValues[i] + 1) + '"></i> ' +
-        depthValues[i] + (depthValues[i + 1] ? '&ndash;' + depthValues[i + 1] + '<br>' : '+');
-    }
-  
-    // Add color boxes next to each depth range
-    for (var i = 0; i < depthValues.length; i++) {
-      div.innerHTML += '<div class="color-box" style="background:' + getColor(depthValues[i] + 1) + '"></div>';
+        '<div><i style="background:' + getColor(depthValues[i] + 1) + '"></i> ' +
+        depthValues[i] + (depthValues[i + 1] ? '&ndash;' + depthValues[i + 1] + '</div>' : '+</div>');
     }
   
     return div;
